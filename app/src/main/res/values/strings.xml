@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">GitHubTask</string>
+    <string name="loading">Loading…</string>
+    <string name="forks_count">Forks Count :</string>
+    <string name="languages">Languages :</string>
+    <string name="creation_date">Creation Date :</string>
+    <string name="unknown">\?</string>
+    <string name="language">Language: %s</string>
+    <string name="no_results">No results 😓</string>
+
+</resources>

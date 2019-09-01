@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="3dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:id="@+id/image_container"
+            android:layout_width="70dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/language"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/repo_name">
+
+            <ImageView
+                android:id="@+id/owner_image"
+                android:layout_width="70dp"
+                android:layout_height="60dp"
+                android:contentDescription="@null"
+                app:srcCompat="@drawable/github_repo" />
+
+            <ProgressBar
+                android:id="@+id/image_loader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center" />
+        </FrameLayout>
+
+
+        <TextView
+            android:id="@+id/repo_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:textAlignment="textStart"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/image_container"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/repo_description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/repo_name"
+            app:layout_constraintTop_toBottomOf="@+id/repo_name" />
+
+        <TextView
+            android:id="@+id/forks_count_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:text="@string/forks_count"
+            app:layout_constraintStart_toStartOf="@+id/repo_description"
+            app:layout_constraintTop_toBottomOf="@+id/repo_description" />
+
+        <TextView
+            android:id="@+id/forks_count"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/forks_count_label"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/forks_count_label"
+            app:layout_constraintTop_toTopOf="@+id/forks_count_label" />
+
+
+        <TextView
+            android:id="@+id/language_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:text="@string/languages"
+            app:layout_constraintStart_toStartOf="@+id/forks_count_label"
+            app:layout_constraintTop_toBottomOf="@+id/forks_count" />
+
+        <TextView
+            android:id="@+id/language"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/language_label"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/forks_count"
+            app:layout_constraintTop_toTopOf="@+id/language_label" />
+
+
+        <TextView
+            android:id="@+id/creation_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:text="@string/creation_date"
+            app:layout_constraintStart_toStartOf="@+id/forks_count_label"
+            app:layout_constraintTop_toBottomOf="@+id/language" />
+
+        <TextView
+            android:id="@+id/creation_date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/creation_label"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/forks_count"
+            app:layout_constraintTop_toTopOf="@+id/creation_label" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>
