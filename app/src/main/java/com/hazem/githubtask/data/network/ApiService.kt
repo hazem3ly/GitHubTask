@@ -1,7 +1,7 @@
 package com.hazem.githubtask.data.network
 
-import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.hazem.githubtask.data.network.response.RepoDetails
+import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import kotlinx.coroutines.Deferred
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -14,6 +14,7 @@ import retrofit2.http.Query
 
 const val BASE_URL = "https://api.github.com/"
 const val REPO_OWNER_NAME = "JakeWharton"
+//const val REPO_OWNER_NAME = "hazem3ly"
 const val REPO_PER_PAGE = 15
 
 interface ApiService {

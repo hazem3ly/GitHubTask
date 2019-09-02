@@ -5,7 +5,7 @@
     <string name="languages">Languages :</string>
     <string name="creation_date">Creation Date :</string>
     <string name="unknown">\?</string>
-    <string name="language">Language: %s</string>
+    <string name="language">Lang: %s</string>
     <string name="no_results">No results 😓</string>
 
 </resources>

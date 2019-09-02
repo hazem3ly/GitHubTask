@@ -18,11 +18,10 @@ package com.hazem.githubtask.ui.adapters
 
 import android.content.Intent
 import android.net.Uri
-import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
 import com.hazem.githubtask.R
 import com.hazem.githubtask.data.network.response.RepoDetails
 import com.squareup.picasso.Callback
@@ -37,7 +36,7 @@ class RepoViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     private val repoDescription = itemView.repo_description
     private val forksCount = itemView.forks_count
     private val language = itemView.language
-    private val creationDate = itemView.creation_date
+    private val starts_count = itemView.starts_count
     private val repoName = itemView.repo_name
     private val imageLoader = itemView.image_loader
 
@@ -57,7 +56,7 @@ class RepoViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         if (repo == null) {
             val resources = itemView.resources
             repoName.text = resources.getString(R.string.loading)
-            creationDate.text = resources.getString(R.string.loading)
+            starts_count.text = resources.getString(R.string.loading)
             repoDescription.visibility = View.GONE
             language.visibility = View.GONE
             imageLoader.visibility = View.VISIBLE
@@ -80,6 +79,7 @@ class RepoViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         repoDescription.visibility = descriptionVisibility
 
         forksCount.text = repo.forks_count.toString()
+        starts_count.text = repo.stargazers_count.toString()
 
         // if the language is missing, hide the label and the value
         var languageVisibility = View.GONE

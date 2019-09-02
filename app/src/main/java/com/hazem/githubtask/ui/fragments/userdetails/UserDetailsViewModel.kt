@@ -1,10 +1,6 @@
 package com.hazem.githubtask.ui.fragments.userdetails
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
-import com.hazem.githubtask.data.network.response.RepoDetails
 import com.hazem.githubtask.data.repository.RepositoryApi
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
@@ -38,7 +34,10 @@ class UserDetailsViewModel(private val repository: RepositoryApi) : ViewModel() 
         firstVisibleItemPosition: Int,
         totalItemCount: Int
     ) = GlobalScope.launch {
-        if (visibleItemCount + firstVisibleItemPosition + VISIBLE_THRESHOLD >= totalItemCount ) {
+        if ((visibleItemCount + firstVisibleItemPosition + VISIBLE_THRESHOLD) >= totalItemCount
+            && firstVisibleItemPosition >= 0
+            && totalItemCount >= 15
+        ) {
             repository.requestMoreRepos()
         }
     }
