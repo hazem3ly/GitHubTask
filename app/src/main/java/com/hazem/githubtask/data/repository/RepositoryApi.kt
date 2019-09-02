@@ -2,7 +2,7 @@ package com.hazem.githubtask.data.repository
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.hazem.githubtask.data.network.response.RepoDetails
+import com.hazem.githubtask.data.model.RepoDetails
 
 interface RepositoryApi {
     val loadMoreLiveData: MutableLiveData<Boolean>

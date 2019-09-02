@@ -1,4 +1,4 @@
-package com.hazem.githubtask.data.network.response
+package com.hazem.githubtask.data.model
 
 import com.google.gson.annotations.SerializedName
 

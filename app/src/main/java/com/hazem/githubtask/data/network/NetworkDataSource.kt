@@ -1,7 +1,7 @@
 package com.hazem.githubtask.data.network
 
 import androidx.lifecycle.LiveData
-import com.hazem.githubtask.data.network.response.RepoDetails
+import com.hazem.githubtask.data.model.RepoDetails
 import retrofit2.Response
 
 interface NetworkDataSource {

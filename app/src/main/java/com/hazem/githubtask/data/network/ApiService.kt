@@ -1,6 +1,6 @@
 package com.hazem.githubtask.data.network
 
-import com.hazem.githubtask.data.network.response.RepoDetails
+import com.hazem.githubtask.data.model.RepoDetails
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import kotlinx.coroutines.Deferred
 import okhttp3.OkHttpClient
@@ -14,7 +14,6 @@ import retrofit2.http.Query
 
 const val BASE_URL = "https://api.github.com/"
 const val REPO_OWNER_NAME = "JakeWharton"
-//const val REPO_OWNER_NAME = "hazem3ly"
 const val REPO_PER_PAGE = 15
 
 interface ApiService {
@@ -35,17 +34,17 @@ interface ApiService {
             logger.level = HttpLoggingInterceptor.Level.BASIC
 
             val okHttpClient = OkHttpClient.Builder()
-                    .addInterceptor(logger)
-                    .addInterceptor(connectivityInterceptor)
-                    .build()
+                .addInterceptor(logger)
+                .addInterceptor(connectivityInterceptor)
+                .build()
 
             return Retrofit.Builder()
-                    .client(okHttpClient)
-                    .baseUrl(BASE_URL) // TODO Don't Forget To Change BASE_URL
-                    .addCallAdapterFactory(CoroutineCallAdapterFactory())
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .build()
-                    .create(ApiService::class.java)
+                .client(okHttpClient)
+                .baseUrl(BASE_URL) // TODO Don't Forget To Change BASE_URL
+                .addCallAdapterFactory(CoroutineCallAdapterFactory())
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+                .create(ApiService::class.java)
         }
     }
 

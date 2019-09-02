@@ -7,14 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.hazem.githubtask.R
-import com.hazem.githubtask.data.network.response.RepoDetails
+import com.hazem.githubtask.data.model.RepoDetails
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_layout.view.*
 
-/**
- * View Holder for a [Repo] RecyclerView list item.
- */
 class RepoViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     private val ownerImage = itemView.owner_image
     private val repoDescription = itemView.repo_description

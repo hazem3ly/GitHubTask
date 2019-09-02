@@ -3,8 +3,8 @@ package com.hazem.githubtask.data.repository
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.hazem.githubtask.data.db.RepoDetailsDao
+import com.hazem.githubtask.data.model.RepoDetails
 import com.hazem.githubtask.data.network.NetworkDataSource
-import com.hazem.githubtask.data.network.response.RepoDetails
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch

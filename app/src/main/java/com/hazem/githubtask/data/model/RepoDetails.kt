@@ -1,4 +1,4 @@
-package com.hazem.githubtask.data.network.response
+package com.hazem.githubtask.data.model
 
 import androidx.room.Embedded
 import androidx.room.Entity
@@ -8,10 +8,10 @@ import com.google.gson.annotations.SerializedName
 @Entity(tableName = "user_repos")
 data class RepoDetails(
     @PrimaryKey(autoGenerate = true)
-        @SerializedName("id") var id: Int?,
+    @SerializedName("id") var id: Int?,
     @SerializedName("name") var name: String?,
     @Embedded(prefix = "user_")
-        @SerializedName("owner") var owner: Owner?,
+    @SerializedName("owner") var owner: Owner?,
     @SerializedName("html_url") var html_url: String?,
     @SerializedName("description") var description: String?,
     @SerializedName("language") var language: String?,

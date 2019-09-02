@@ -48,15 +48,13 @@ class UserDetailsFragment : ScopedFragment(), KodeinAware {
         when (item?.itemId) {
             R.id.clear_cash -> clearCash()
         }
-
         return super.onOptionsItemSelected(item)
     }
 
     private fun clearCash() = launch {
         viewModel.deleteOldData().await()
-        Toast.makeText(requireContext(), "Cash Cleared, Loading New Data", Toast.LENGTH_SHORT)
+        Toast.makeText(requireContext(), "Cash Cleared", Toast.LENGTH_SHORT)
             .show()
-//        viewModel.getUserRepos(userName).await()
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -85,7 +83,6 @@ class UserDetailsFragment : ScopedFragment(), KodeinAware {
             progress?.visibility = View.GONE
             showOfflineSnakebar()
         })
-
     }
 
     private fun showOfflineSnakebar() {

@@ -3,7 +3,7 @@ package com.hazem.githubtask.data.network
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.hazem.githubtask.data.network.response.RepoDetails
+import com.hazem.githubtask.data.model.RepoDetails
 import retrofit2.Response
 import java.io.IOException
 

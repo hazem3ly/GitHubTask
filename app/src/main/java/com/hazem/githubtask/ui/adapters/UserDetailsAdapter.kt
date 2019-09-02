@@ -4,7 +4,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.hazem.githubtask.data.network.response.RepoDetails
+import com.hazem.githubtask.data.model.RepoDetails
 import java.util.*
 
 
@@ -35,16 +35,11 @@ class UserDetailsAdapter :
     }
 
     override fun getItemViewType(position: Int): Int {
-//        if (getItem(position) == null)
-//            return LOADING_VIEW
-//        return DATA_VIEW
-
         return if (isLoaderVisible) {
             if (position == itemCount - 1) LOADING_VIEW else DATA_VIEW
         } else {
             DATA_VIEW
         }
-
     }
 
     fun getList(): MutableList<RepoDetails?> {
@@ -55,7 +50,7 @@ class UserDetailsAdapter :
         return items
     }
 
-    protected var isLoaderVisible = false
+    private var isLoaderVisible = false
 
     fun showLoadingMore() {
         isLoaderVisible = true

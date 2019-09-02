@@ -22,12 +22,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.hazem.githubtask.R
 
-/**
- * View Holder for a [Repo] RecyclerView list item.
- */
 class LoadingViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-
-
     companion object {
         fun create(parent: ViewGroup): LoadingViewHolder {
             val view = LayoutInflater.from(parent.context)
