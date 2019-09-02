@@ -19,6 +19,7 @@ class UserDetailsViewModel(private val repository: RepositoryApi) : ViewModel() 
 
 
     internal val loadMoreLiveData = repository.loadMoreLiveData
+    internal val errorLiveData = repository.errorLiveData
 
 
     internal suspend fun getUserRepos(userName: String) = GlobalScope.async {

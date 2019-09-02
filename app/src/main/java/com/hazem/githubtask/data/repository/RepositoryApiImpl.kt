@@ -21,22 +21,24 @@ class RepositoryApiImpl(
     private var listBecomeEmpty = false
 
     override val loadMoreLiveData = MutableLiveData<Boolean>()
+    override val errorLiveData = MutableLiveData<String>()
 
 
     init {
         networkDataSource.apply {
             userRepos.observeForever { it ->
-                lastRequestedPage++
                 isRequestInProgress = false
                 loadMoreLiveData.postValue(false)
                 // persist
                 it?.let {
                     if (it.isSuccessful && it.body() != null) {
+                        lastRequestedPage++
                         persistFetchedData(it)
                         if (it.body()?.isEmpty() == true)
                             listBecomeEmpty = true
                     }
                 }
+                if (it == null) errorLiveData.postValue("Error While Loading Data")
             }
         }
     }
@@ -56,14 +58,24 @@ class RepositoryApiImpl(
         if (isRequestInProgress) return
         isRequestInProgress = true
         loadMoreLiveData.postValue(true)
-        getUserRepos(userName)
+        getMoreUserRepos(userName)
     }
 
     override suspend fun getUserRepos(userName: String): LiveData<List<RepoDetails>> {
         this.userName = userName
+        lastRequestedPage = 1
+        isRequestInProgress = true
         return withContext(Dispatchers.IO) {
             networkDataSource.userRepos(userName, lastRequestedPage)
             return@withContext repoDetailsDao.getSavedRepos()
+        }
+    }
+
+    suspend fun getMoreUserRepos(userName: String) {
+        this.userName = userName
+        isRequestInProgress = true
+        withContext(Dispatchers.IO) {
+            networkDataSource.userRepos(userName, lastRequestedPage)
         }
     }
 

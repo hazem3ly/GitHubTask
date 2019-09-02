@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.snackbar.Snackbar
 import com.hazem.githubtask.R
 import com.hazem.githubtask.data.network.REPO_OWNER_NAME
 import com.hazem.githubtask.ui.adapters.UserDetailsAdapter
@@ -55,7 +56,7 @@ class UserDetailsFragment : ScopedFragment(), KodeinAware {
         viewModel.deleteOldData().await()
         Toast.makeText(requireContext(), "Cash Cleared, Loading New Data", Toast.LENGTH_SHORT)
             .show()
-        viewModel.getUserRepos(userName).await()
+//        viewModel.getUserRepos(userName).await()
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -71,11 +72,35 @@ class UserDetailsFragment : ScopedFragment(), KodeinAware {
         initAdapter()
         getUserRepos(userName)
 
+        emptyList?.setOnClickListener {
+            retry()
+        }
+
         viewModel.loadMoreLiveData.observe(this.viewLifecycleOwner, Observer {
             adapter?.showLoadingMore()
             if (it) adapter?.showLoadingMore() else adapter?.removeLoadingView()
         })
 
+        viewModel.errorLiveData.observe(this.viewLifecycleOwner, Observer {
+            progress?.visibility = View.GONE
+            showOfflineSnakebar()
+        })
+
+    }
+
+    private fun showOfflineSnakebar() {
+        val snackbar = Snackbar.make(view!!, "You Are offline!", Snackbar.LENGTH_INDEFINITE)
+        snackbar.setAction("retry") {
+            retry()
+            snackbar.dismiss()
+        }
+        snackbar.show()
+    }
+
+    private fun retry() = launch {
+        progress?.visibility = View.VISIBLE
+        showEmptyList(false)
+        viewModel.getUserRepos(userName).await()
     }
 
     private fun setupScrollListener() {
@@ -118,6 +143,7 @@ class UserDetailsFragment : ScopedFragment(), KodeinAware {
         if (show) {
             emptyList.visibility = View.VISIBLE
             user_recycler.visibility = View.GONE
+            adapter?.submitList(null)
         } else {
             emptyList.visibility = View.GONE
             user_recycler.visibility = View.VISIBLE
